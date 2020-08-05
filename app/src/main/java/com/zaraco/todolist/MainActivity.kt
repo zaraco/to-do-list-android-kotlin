@@ -27,8 +27,13 @@ class MainActivity : AppCompatActivity() {
         val task = Task()
         task.text = text
         taskRepository.add(task)
+        clearTaskInput()
         Log.i("task", text ?: "")
         showTasks(taskRepository.tasks)
+    }
+
+    private fun clearTaskInput() {
+        taskEt?.text = null
     }
 
     private fun showTasks(tasks: List<Task>) {
