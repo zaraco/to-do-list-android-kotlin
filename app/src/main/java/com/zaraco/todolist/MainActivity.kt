@@ -37,9 +37,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showTasks(tasks: List<Task>) {
-        adapter = TaskAdapter(this, tasks)
+        adapter = TaskAdapter(this, tasks, {position, isChecked ->
+            taskRepository.tasks[position].isDone = isChecked
+        })
         recyclerView?.adapter = adapter
         layoutManager = LinearLayoutManager(this)
         recyclerView?.layoutManager = layoutManager
+
     }
 }
